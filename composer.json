@@ -1,0 +1,15 @@
+{
+    "name": "kmend/document_crud",
+    "autoload": {
+        "psr-4": {
+            "Kmend\\DocumentCrud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kelvin Mendoza L",
+            "email": "128099298+kmendozal@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
