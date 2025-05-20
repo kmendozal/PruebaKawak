@@ -29,13 +29,11 @@ class DashboardController extends Controller
         $this->view('dashboard/buscar', ['data' => $mensaje]);
     }
 
-       public function buscarAction()
+    public function buscarAction()
     {
-        $documento= $_POST["codigo"];
+        $documento = $_POST["codigo"];
         $busqueda =  $this->model->findCod($documento);
         $this->view('dashboard/buscar', ['data' => $busqueda]);
-
-   
     }
 
 
@@ -51,7 +49,7 @@ class DashboardController extends Controller
     public function creacionAction()
     {
 
-        $creacion =  $this->model->create($_POST);
+        $this->model->create($_POST);
         header('Location: /document_crud/public/dashboard');
     }
 
@@ -71,15 +69,14 @@ class DashboardController extends Controller
     public function EditarAction()
     {
         $id = $_POST['DOC_ID'];
-        $edicion =  $this->model->update($id,$_POST);
+        $this->model->update($id, $_POST);
         header('Location: /document_crud/public/dashboard');
     }
 
     public function eliminar()
     {
         $id = $_GET['id'] ?? '';
-        $documentos = $this->model->delete($id);
-
+        $this->model->delete($id);
         header('Location: /document_crud/public/dashboard');
     }
 }

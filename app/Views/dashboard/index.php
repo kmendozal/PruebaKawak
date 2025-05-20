@@ -18,11 +18,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+        }
+
+        .acciones {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
         }
 
         table {
             border-collapse: collapse;
-            width: 60%;
+            width: 80%;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: left;
@@ -43,28 +50,62 @@
             background-color: #f1f1f1;
         }
 
-        .crear-btn {
-            margin-bottom: 20px;
+        .btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-editar {
+            background-color: #3498db;
+        }
+
+        .btn-editar:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-eliminar {
+            background-color: #e74c3c;
+        }
+
+        .btn-eliminar:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-crear {
+            background-color: #2ecc71;
+        }
+
+        .btn-crear:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-buscar {
+            background-color: #9b59b6;
+        }
+
+        .btn-buscar:hover {
+            background-color: #8e44ad;
         }
     </style>
 </head>
 
 <body>
     <div class="contenido">
-        <div class="crear-btn">
+        <h1>DASHBOARD </h1>
+        <div class="acciones">
             <form action="/document_crud/public/dashboard/creacion" method="GET">
-                <button type="submit">Crear nuevo documento</button>
+                <button type="submit" class="btn btn-crear">Crear nuevo documento</button>
             </form>
-        </div>
-        <br>
 
-         <div class="buscar-btn">
             <form action="/document_crud/public/dashboard/buscar" method="GET">
-                <button type="submit">Buscar un documento</button>
+                <button type="submit" class="btn btn-buscar">Buscar un documento</button>
             </form>
         </div>
-
-        <hr>
 
         <table>
             <thead>
@@ -79,7 +120,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php foreach ($data as $campos): ?>
                     <tr>
                         <td><?= $campos["DOC_ID"] ?></td>
@@ -89,17 +129,22 @@
                         <td><?= $campos["PRO_NOMBRE"] ?></td>
                         <td><?= $campos["TIP_NOMBRE"] ?></td>
                         <td>
-                            <form action="/document_crud/public/dashboard/editar/?id=<?= $campos["DOC_ID"] ?>" method="POST" style="display:inline;">
-                                <button type="submit">Editar</button>
-                            </form>
-                            <form action="/document_crud/public/dashboard/eliminar/?id=<?= $campos["DOC_ID"] ?>" method="POST" style="display:inline;" onsubmit="return confirm('¿Seguro que quieres eliminar este documento?');">
-                                <button type="submit">Eliminar</button>
-                            </form>
+                            <div style="display: flex; gap: 10px;">
+                                <form action="/document_crud/public/dashboard/editar/?id=<?= $campos["DOC_ID"] ?>" method="POST">
+                                    <button type="submit" class="btn btn-editar">Editar</button>
+                                </form>
+
+                                <form action="/document_crud/public/dashboard/eliminar/?id=<?= $campos["DOC_ID"] ?>" method="POST" onsubmit="return confirm('¿Seguro que quieres eliminar este documento?');">
+                                    <button type="submit" class="btn btn-eliminar">Eliminar</button>
+                                </form>
+                            </div>
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+
     </div>
 </body>
 

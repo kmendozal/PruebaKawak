@@ -21,7 +21,6 @@ class HomeController extends Controller
         if ($username === 'admin' && $password === '1234') {
                header('Location: /document_crud/public/dashboard');
                 exit;
-            //  $this->view('dashboard/index', ['username' => $username]);
         } else {
             echo "Usuario o contraseña incorrectos";
         }
