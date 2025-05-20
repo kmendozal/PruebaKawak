@@ -2,7 +2,7 @@
     "name": "kmend/document_crud",
     "autoload": {
         "psr-4": {
-            "Kmend\\DocumentCrud\\": "src/"
+            "App\\": "app/"
         }
     },
     "authors": [
